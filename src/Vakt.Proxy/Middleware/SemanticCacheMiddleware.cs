@@ -31,7 +31,7 @@ public class SemanticCacheMiddleware(RequestDelegate next, IConnectionMultiplexe
                 if (!string.IsNullOrEmpty(responseText))
                 {
                     // Fire and forget (or async detach) to not block response
-                    // Actually, we should allow response to flush.
+
                     // Async store
                     _ = StoreInCacheAsync(embedding, responseText);
                 }

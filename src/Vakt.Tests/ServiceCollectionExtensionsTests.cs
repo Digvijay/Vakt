@@ -44,7 +44,7 @@ public class ServiceCollectionExtensionsTests
         // YARP registers IProxyConfigProvider, IReverseProxyFeature, etc.
         // We can check for ITransformProvider which SovereignTransform implements, 
         // OR check if YARP services are present.
-        // Let's check if our transform is registered as ITransformProvider? 
+ 
         // YARP's .AddTransforms<T>() usually registers T itself.
     }
 }

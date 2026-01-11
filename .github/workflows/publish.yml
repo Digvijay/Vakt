@@ -50,7 +50,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
         
       - name: Build and push Vakt.Proxy
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: src/Vakt.Proxy/Dockerfile
@@ -60,7 +60,7 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/vakt-proxy:${{ github.ref_name }}
             
       - name: Build and push Vakt.Intelligence
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: src/Vakt.Intelligence/Dockerfile

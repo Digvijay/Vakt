@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <Authors>Digvijay</Authors>
+    <Company>Vakt</Company>
+    <Product>Project Vakt</Product>
+    <Copyright>Copyright (c) 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Digvijay/Vakt</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Digvijay/Vakt</RepositoryUrl>
+  </PropertyGroup>
+</Project>

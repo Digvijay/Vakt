@@ -3,7 +3,7 @@
 > **Sovereign AI Gateway**: Unblock GenAI adoption in regulated industries by redacting PII locally before it touches the cloud.
 
 ![CI](https://github.com/digvijay/Vakt/actions/workflows/ci.yml/badge.svg)
-![Azure](https://github.com/digvijay/Vakt/actions/workflows/azure-dev.yml/badge.svg)
+![Version](https://img.shields.io/badge/version-v0.1.0-blue)
 ![Publish](https://github.com/digvijay/Vakt/actions/workflows/publish.yml/badge.svg)
 ![CodeQL](https://github.com/digvijay/Vakt/actions/workflows/codeql.yml/badge.svg)
 ![Status](https://img.shields.io/badge/Status-Ideation-yellow)

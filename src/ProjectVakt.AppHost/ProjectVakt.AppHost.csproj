@@ -1,0 +1,21 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.1.0">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vakt.Proxy\Vakt.Proxy.csproj" />
+    <ProjectReference Include="..\Vakt.Intelligence\Vakt.Intelligence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.Redis" />
+  </ItemGroup>
+
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>ecf92c54-81f4-4938-9798-873c06c1beb5</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

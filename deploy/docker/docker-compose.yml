@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # 🧠 Vakt Intelligence (Model Hosting)
+  vakt-intelligence:
+    image: ghcr.io/digvijay/vakt-intelligence:latest
+    container_name: vakt-intelligence
+    ports:
+      - "8081:8080"
+    volumes:
+      - vakt-models:/data/models
+    environment:
+      - SemanticCache__EmbeddingModelPath=/data/models/all-MiniLM-L6-v2/model.onnx
+      - SemanticCache__EmbeddingVocabPath=/data/models/all-MiniLM-L6-v2/vocab.txt
+    networks:
+      - vakt-net
+
+  # 🛡️ Vakt Proxy (The Gateway)
+  vakt-proxy:
+    image: ghcr.io/digvijay/vakt-proxy:latest
+    container_name: vakt-proxy
+    ports:
+      - "5000:8080"
+    environment:
+      - ConnectionStrings__cache=redis:6379
+      - Services__vakt-intelligence__http__0=http://vakt-intelligence:8080
+      - SemanticCache__IndexName=vakt-semantic-cache
+    depends_on:
+      - vakt-intelligence
+      - redis
+    networks:
+      - vakt-net
+
+  # ⚡ Redis Stack (Vector DB)
+  redis:
+    image: redis/redis-stack-server:latest
+    container_name: vakt-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - vakt-redis-data:/data
+    networks:
+      - vakt-net
+
+volumes:
+  vakt-models:
+  vakt-redis-data:
+
+networks:
+  vakt-net:
+    driver: bridge

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vakt.Core\Vakt.Core.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>vakt</ToolCommandName>
+    <Version>0.1.0</Version>
+    <Authors>Digvijay</Authors>
+    <Description>CLI tool for Vakt model management and local testing.</Description>
+    <PackageProjectUrl>https://github.com/digvijay/Vakt</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/digvijay/Vakt</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>

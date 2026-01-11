@@ -17,11 +17,7 @@
     <Nullable>enable</Nullable>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>vakt</ToolCommandName>
-    <Version>0.1.0</Version>
-    <Authors>Digvijay</Authors>
     <Description>CLI tool for Vakt model management and local testing.</Description>
-    <PackageProjectUrl>https://github.com/digvijay/Vakt</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/digvijay/Vakt</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

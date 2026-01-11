@@ -200,11 +200,10 @@ public partial class SovereignTransform(
                                 // 3. Check for Changes
                                 bool wasModified = !string.Equals(content, redacted, StringComparison.Ordinal);
                                 
-                                // 📜 AUDIT LOG (Compliance)
-                                await auditLogger.LogEventAsync(httpContext.TraceIdentifier, content, redacted, wasModified);
-
                                 if (wasModified)
                                 {
+                                    // 📜 AUDIT LOG (Compliance)
+                                    await auditLogger.LogEventAsync(httpContext.TraceIdentifier, content, redacted, wasModified);
                                     // 🚨 PII DETECTED
                                     LogPiiDetected(logger);
                                     

@@ -242,40 +242,7 @@ public partial class SovereignTransform(
             }
         });
 
-        // Response Transform for Populating Cache
-        context.AddResponseTransform(async transformContext =>
-        {
-             var httpContext = transformContext.HttpContext;
-             if (httpContext.Response.StatusCode == 200 && httpContext.Items.TryGetValue("RequestEmbedding", out var embObj))
-             {
-                 // Capture Body? 
-                 // YARP ResponseTransform runs *before* body is copied to client? 
-                 // "Response transforms are executed before the response headers are copied from the destination... 
-                 // They cannot modify the response body."
-                 // Correct. We cannot easily READ the response body here to cache it without a custom middleware wrapping the stream.
-                 // Given constraints, I will implement a simpler "Fire and Forget" population or omit population for this turn if too complex?
-                 // User wants "True Semantic Caching". Caching needs population.
-                 // I will add a helper method to "ReadStream" if possible, but YARP doesn't expose it here easily.
-                 // I need to wrap the response stream in the RequestTransform phase to capture it?
-                 // Or just assume for this "Proto" caching is Read-Only (pre-seeded)? No, that's cheating.
-                 
-                 // Alternative: Since we are in an agent, I can add a Middleware to `Vakt.Proxy` pipeline *wrapping* `MapReverseProxy`.
-                 // That middleware can capture the response body.
-                 // Let's rely on standard Middleware pattern in Program.cs?
-                 // But I'm editing SovereignTransform.
-                 // Let's skip population inside this Transform and trust I adds a Middleware?
-                 // No, I should do it here if possible.
-                 // Wait, `WithTransformResponse`? No.
-                 
-                 // OK, I'll stick to the Request Logic (Semantic Check) + "Mock" Population (Log "Would populate") 
-                 // OR implement the stream wrapper in the Request transform. 
-                 // `var originalBody = httpContext.Response.Body; using var memStream ...`
-                 // This works in standard middleware. In YARP RequestTransform, `next` is not available.
-                 // I can DO IT in the RequestTransform!
-                 // `context.HttpContext.Response.Body = new CachingStream(originalBody, ...)`
-                 // Yes.
-             }
-        });
+
     }
 
     private static byte[] GetBytes(float[] floatArray)
